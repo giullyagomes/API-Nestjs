@@ -1,156 +1,156 @@
-# Online Shopping System API
+# API do Sistema de Compras Online
 
-This is a backend API for an online shopping system built with NestJS, TypeScript, and SQLite. It provides functionality for product management, shopping cart operations, user authentication, and order processing.
+Esta é uma API backend para um sistema de compras online construída com NestJS, TypeScript e SQLite. Ela oferece funcionalidades para gerenciamento de produtos, operações de carrinho de compras, autenticação de usuários e processamento de pedidos.
 
-## Features
+## Funcionalidades
 
-- **Product Management**: CRUD operations for products, including search by criteria
-- **Shopping Cart**: Add, remove, update items in cart
-- **User Authentication**: Register, login with JWT
-- **Order Processing**: Checkout process, order history
-- **API Documentation**: Swagger/OpenAPI docs
+- **Gerenciamento de Produtos**: Operações CRUD para produtos, incluindo busca por critérios
+- **Carrinho de Compras**: Adicionar, remover e atualizar itens no carrinho
+- **Autenticação de Usuários**: Registro e login com JWT
+- **Processamento de Pedidos**: Processo de finalização de compra e histórico de pedidos
+- **Documentação da API**: Documentação Swagger/OpenAPI
 
-## Prerequisites
+## Pré-requisitos
 
-- Node.js (v14 or later)
-- npm (v6 or later)
+- Node.js (v14 ou superior)
+- npm (v6 ou superior)
 
-## Installation
+## Instalação
 
-1. Clone the repository:
+1. Clone o repositório:
 
 ```bash
 git clone https://github.com/yourusername/online-shopping-api.git
 cd online-shopping-api
 ```
 
-2. Install dependencies:
+2. Instale as dependências:
 
 ```bash
 npm install
 ```
 
-3. Create a `.env` file in the root directory with the following content:
+3. Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 
 ```
-# Application
+# Aplicação
 NODE_ENV=development
 PORT=3000
 
-# Authentication
-JWT_SECRET=your_jwt_secret_key_here
+# Autenticação
+JWT_SECRET=sua_chave_secreta_jwt_aqui
 JWT_EXPIRATION=1d
 ```
 
-## Running the Application
+## Executando a Aplicação
 
-### Development Mode
+### Modo de Desenvolvimento
 
 ```bash
 npm run start:dev
 ```
 
-The application will be available at http://localhost:3000.
+A aplicação estará disponível em http://localhost:3000.
 
-### Production Mode
+### Modo de Produção
 
 ```bash
 npm run build
 npm run start:prod
 ```
 
-## API Documentation
+## Documentação da API
 
-Swagger documentation is available at http://localhost:3000/api when the application is running.
+A documentação Swagger está disponível em http://localhost:3000/api quando a aplicação estiver em execução.
 
-## API Endpoints
+## Endpoints da API
 
-### Authentication
+### Autenticação
 
-- `POST /auth/register` - Register a new user
-- `POST /auth/login` - Login and get JWT token
+- `POST /auth/register` - Registrar um novo usuário
+- `POST /auth/login` - Fazer login e obter token JWT
 
-### Products
+### Produtos
 
-- `GET /products` - Get all products (with filtering)
-- `GET /products/:id` - Get a specific product
-- `POST /products` - Create a new product (admin only)
-- `PATCH /products/:id` - Update a product (admin only)
-- `DELETE /products/:id` - Delete a product (admin only)
+- `GET /products` - Obter todos os produtos (com filtros)
+- `GET /products/:id` - Obter um produto específico
+- `POST /products` - Criar um novo produto (somente admin)
+- `PATCH /products/:id` - Atualizar um produto (somente admin)
+- `DELETE /products/:id` - Excluir um produto (somente admin)
 
-### Shopping Cart
+### Carrinho de Compras
 
-- `GET /cart` - Get user's cart
-- `POST /cart` - Add product to cart
-- `PATCH /cart/:id` - Update cart item quantity
-- `DELETE /cart/:id` - Remove item from cart
-- `DELETE /cart` - Clear cart
+- `GET /cart` - Obter o carrinho do usuário
+- `POST /cart` - Adicionar produto ao carrinho
+- `PATCH /cart/:id` - Atualizar a quantidade de um item no carrinho
+- `DELETE /cart/:id` - Remover item do carrinho
+- `DELETE /cart` - Limpar o carrinho
 
-### Orders
+### Pedidos
 
-- `POST /orders` - Create a new order from cart
-- `GET /orders` - Get user's orders
-- `GET /orders/:id` - Get a specific order
-- `PATCH /orders/:id/status` - Update order status (admin only)
-- `GET /orders/all` - Get all orders (admin only)
+- `POST /orders` - Criar um novo pedido a partir do carrinho
+- `GET /orders` - Obter os pedidos do usuário
+- `GET /orders/:id` - Obter um pedido específico
+- `PATCH /orders/:id/status` - Atualizar o status do pedido (somente admin)
+- `GET /orders/all` - Obter todos os pedidos (somente admin)
 
-### Users
+### Usuários
 
-- `GET /users/profile` - Get current user profile
-- `PATCH /users/:id` - Update user profile
-- `GET /users` - Get all users (admin only)
-- `DELETE /users/:id` - Delete a user (admin only)
+- `GET /users/profile` - Obter o perfil do usuário atual
+- `PATCH /users/:id` - Atualizar o perfil do usuário
+- `GET /users` - Obter todos os usuários (somente admin)
+- `DELETE /users/:id` - Excluir um usuário (somente admin)
 
-## Testing
+## Testes
 
-### Running Tests
+### Executando Testes
 
 ```bash
-# Unit tests
+# Testes unitários
 npm run test
 
-# E2E tests
+# Testes E2E
 npm run test:e2e
 
-# Test coverage
+# Cobertura de testes
 npm run test:cov
 ```
 
-## Database
+## Banco de Dados
 
-The application uses SQLite as the database, which is stored in the `database.sqlite` file in the root directory. In development mode, the database schema is automatically created using TypeORM synchronize.
+A aplicação utiliza SQLite como banco de dados, armazenado no arquivo `database.sqlite` na raiz do projeto. No modo de desenvolvimento, o esquema do banco de dados é criado automaticamente usando o TypeORM synchronize.
 
-## Project Structure
+## Estrutura do Projeto
 
 ```
 src/
-├── auth/                  # Authentication module
-├── cart/                  # Shopping cart module
-├── common/                # Common utilities, decorators, etc.
-├── orders/                # Orders module
-├── products/              # Products module
-├── users/                 # Users module
-├── app.module.ts          # Main application module
-└── main.ts                # Application entry point
+├── auth/                  # Módulo de autenticação
+├── cart/                  # Módulo de carrinho de compras
+├── common/                # Utilitários comuns, decoradores, etc.
+├── orders/                # Módulo de pedidos
+├── products/              # Módulo de produtos
+├── users/                 # Módulo de usuários
+├── app.module.ts          # Módulo principal da aplicação
+└── main.ts                # Ponto de entrada da aplicação
 ```
 
-## Role-Based Access Control
+## Controle de Acesso Baseado em Papéis
 
-The application supports two roles:
-- **User**: Can manage their cart, place orders, and view their profile
-- **Admin**: Can manage products, view all orders, and update order status
+A aplicação suporta dois papéis:
+- **Usuário**: Pode gerenciar seu carrinho, realizar pedidos e visualizar seu perfil
+- **Admin**: Pode gerenciar produtos, visualizar todos os pedidos e atualizar o status dos pedidos
 
-## Example API Requests
+## Exemplos de Requisições à API
 
-### Register a New User
+### Registrar um Novo Usuário
 
 ```bash
 curl -X POST http://localhost:3000/auth/register \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "user@example.com",
-    "fullName": "John Doe",
-    "password": "password123"
+    "email": "usuario@exemplo.com",
+    "fullName": "João Silva",
+    "password": "senha123"
   }'
 ```
 
@@ -160,50 +160,50 @@ curl -X POST http://localhost:3000/auth/register \
 curl -X POST http://localhost:3000/auth/login \
   -H "Content-Type: application/json" \
   -d '{
-    "email": "user@example.com",
-    "password": "password123"
+    "email": "usuario@exemplo.com",
+    "password": "senha123"
   }'
 ```
 
-### Create a Product (Admin Only)
+### Criar um Produto (Somente Admin)
 
 ```bash
 curl -X POST http://localhost:3000/products \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Authorization: Bearer SEU_TOKEN_JWT" \
   -d '{
-    "name": "Wireless Headphones",
-    "description": "High quality wireless headphones with noise cancellation",
+    "name": "Fones de Ouvido Sem Fio",
+    "description": "Fones de ouvido sem fio de alta qualidade com cancelamento de ruído",
     "price": 99.99,
     "stockQuantity": 100,
-    "category": "Electronics",
-    "imageUrl": "https://example.com/headphones.jpg"
+    "category": "Eletrônicos",
+    "imageUrl": "https://exemplo.com/fones.jpg"
   }'
 ```
 
-### Add Product to Cart
+### Adicionar Produto ao Carrinho
 
 ```bash
 curl -X POST http://localhost:3000/cart \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Authorization: Bearer SEU_TOKEN_JWT" \
   -d '{
-    "productId": "product-uuid-here",
+    "productId": "uuid-do-produto-aqui",
     "quantity": 2
   }'
 ```
 
-### Create an Order
+### Criar um Pedido
 
 ```bash
 curl -X POST http://localhost:3000/orders \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
+  -H "Authorization: Bearer SEU_TOKEN_JWT" \
   -d '{
-    "shippingAddress": "123 Main St, Anytown, AT 12345"
+    "shippingAddress": "Rua Principal, 123, Cidade Qualquer, CQ 12345"
   }'
 ```
 
-## License
+## Licença
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Este projeto é licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
